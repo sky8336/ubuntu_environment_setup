@@ -18,6 +18,8 @@ source ./utils.sh
 
 deb_packages=(
 	baidunetdisk_linux_2.0.2.deb
+	dingding/dingding.deb
+	wiznote/wiznote_2.3.2.4_amd64.deb
 )
 
 cur_prog=0
@@ -43,6 +45,12 @@ function install_packages()
 		let prog+=5
 		progress_log $prog "Install ${deb_packages[i]} ... done"
 	done
+
+	cd software/dingding
+	tar -zxf dtalk.tar.gz
+	sudo cp ./dtalk/ /opt -dpRf
+	rm ./dtalk -rf
+	cd -
 
 	cur_prog=$prog
 }
