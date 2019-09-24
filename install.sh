@@ -15,6 +15,21 @@
 
 source ./utils.sh
 
+install_typora()
+{
+	# or run:
+	sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE
+
+	wget -qO - https://typora.io/linux/public-key.asc | sudo apt-key add -
+
+	# add Typora's repository
+	sudo add-apt-repository 'deb https://typora.io/linux ./'
+	sudo apt-get update
+
+	# install typora
+	sudo apt-get install typora
+}
+
 
 deb_packages=(
 	baidunetdisk_linux_2.0.2.deb
@@ -76,6 +91,7 @@ function update_self()
 ubuntu_env_setup()
 {
 	install_packages
+	install_typora
 }
 
 main()
